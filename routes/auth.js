@@ -12,6 +12,7 @@ const {name, email, profilePic} =req.body;
 
 let user = await User.findOne({email:email});
 
+/// if not exist store it into database
 if(!user){
 user =new User({
     email:email,
@@ -22,12 +23,8 @@ user =new User({
 user= await user.save()
 }
 res.json({user:user})
-
-
-/// if not exist store it into database
-
     }catch(e){
-
+res.status(500).json({error:e.message});
     }
 })
 

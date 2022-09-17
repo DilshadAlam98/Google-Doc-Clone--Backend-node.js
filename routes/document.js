@@ -30,7 +30,7 @@ documentRoute.post('/doc/create', auth, async (req, res) => {
 documentRoute.get('/doc/me', auth, async (req, res) => {
     try { 
         let documents = await Document.find({ uid: req.user });
-        res.json(document);
+        res.json(documents);
     } catch (e) { 
         res.status(500).json({ error: e.message })
     }
